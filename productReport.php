@@ -86,9 +86,7 @@ if (!isset($_SESSION['email'])) {
 
     $queryString="select orderdetails.productCode,COUNT(orderNumber) as orderCount FROM `orderdetails` WHERE productCode='$proID'";
     $dbResult=$con->query($queryString);
-    $rowx=mysqli_fetch_assoc($dbResult);
-     echo $rowx['orderCount'];
-     echo $proID;
+    //$rowx=mysqli_fetch_assoc($dbResult);
 print_r($rowx);
    while ($rowx=mysqli_fetch_assoc($dbResult)) {
         echo "<tr>

@@ -52,26 +52,30 @@ if ($con->connect_error) {
     die($con->connect_error);
 }
 
-$queryString="select * from customers where customerNumber like '$cusID%' ";
+$queryString="select * from customers where customerNumber=$cusID";
 
 $dbResult=$con->query($queryString);
-$row=mysqli_fetch_assoc($dbResult);
-echo "<h1 class='text-center m-auto'>customers  information $cusID </h1>";
-echo "<table class='table'>
-  <thead class='thead-dark'>
-    <tr>
-      <th scope='col'>Customer number</th>
-      <th scope='col'>Customer Name</th>
-      <th scope='col'>contact Name</th>
-<th scope='col'>phone</th>
-<th scope='col'>address</th>
-<th scope='col'>country state city</th>
+//$row=mysqli_fetch_assoc($dbResult);
+echo $cusID;
+echo "<h1 class='text-center m-auto'>customers information $cusID </h1>";
 
-            <th scope='col'>postalCode</th>
+?>
+            <table class='table'>
+                <thead class='thead-dark'>
+                    <tr>
+                        <th scope='col'>Customer number</th>
+                        <th scope='col'>Customer Name</th>
+                        <th scope='col'>contact Name</th>
+                        <th scope='col'>phone</th>
+                        <th scope='col'>address</th>
+                        <th scope='col'>country state city</th>
 
-    </tr>
-  </thead>
-  <tbody>";
+                        <th scope='col'>postalCode</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 while ($row=mysqli_fetch_assoc($dbResult)) {
     echo "
     <tr>
@@ -87,10 +91,11 @@ while ($row=mysqli_fetch_assoc($dbResult)) {
 
     </tr>";
 }
-echo "  </tbody>
-</table>";
-
 ?>
+                </tbody>
+            </table>
+
+
 
 
         </div>
